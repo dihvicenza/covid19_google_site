@@ -16,6 +16,8 @@ Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?aut
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
 2. Andamento epidemia dove è possibile osservare l'evoluzione dei dati pandemici a partire da inizio pandemia
 
+Il sito si aggiorna in maniera automatica ogni giorno alle ore 19:00
+
 ### 1. Dati giornalieri
 In questa sezione si possono visualizzare delle mappe interattive che rappresentano l'Italia suddivisa regione per regione (Trentino e Alto-Adige sono considerate due regioni distinte) e cliccando su una regione si vede il dato relativo alla regione selezionata e il dato Italiano. Ogni regione viene colorata di bianco, giallo, arancione o rosso a seconda del valore del dato considerato. Di default viene visualizzata l'ultima giornata e dei paramentri fissati determinano la colorazione della mappa. Tuttavia, è possibile cambiare sia la data che i paramentri.
 
@@ -70,64 +72,61 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
 
     - Covid19DaInizioPandemia #Cartella con il codice per generare i csv da inizio pandemia 
       - .venv #environment per utilizzare flask e generare i requirements.txt
-      - __pycache__   #file gestito in autonomia da github
-      - libreria
-        - __pycache__ 
-        - graficiCovid.py
-        - graficiCovidRegionePerRegione.py
-        - graficiCovidSettimanali.py
-        - mappaCovid.py
-        - numeroDiAbitanti.py
+      - libreria #Sottocartella con i vari file di codice python
+        - graficiCovid.py #File per creare i csv con i dati giorno per giorno
+        - graficiCovidRegionePerRegione.py #File con le funzioni per calcolare i dati settimanali regione per regione
+        - graficiCovidSettimanali.py #File con la funzione per creare i csv con i dati settimanali
+        - mappaCovid.py #File per creare i csv da inizio pandemia con i dati suddivisi regioni per regione (i csv per fare le mappe)
+        - numeroDiAbitanti.py #File con le funzioni per avere il rapporto tra abitanti Italiani e delle varie regioni
+      - templates 
+        - update.html #File html necessario per AWS
+      - applications.py #Programma principale che esegue tutto il codice
+      - requirements.txt #File necessario per AWS contenente tutte le librerie python utilizzate
+    - Covid19UltimoGiorno #Cartella con i codici per generare i dati dell'ultima giornata
+      - .venv #environment per utilizzare flask e generare i requirements.txt
+      - libreria #Sottocartella con i vari file di codice python
+        - graficiCovid.py  #File per creare i csv con i dati dell'ultimo giorno 
+        - graficiCovidRegionePerRegione.py #File con le funzioni per calcolare i dati dell'ultima settimana regione per regione
+        - graficiCovidSettimanali.py #File con la funzione per creare i csv con i dati dell'ultima settimana
+        - mappaCovid.py #File per creare i csv  con i dati dell'ultimo giorno suddivisi regioni per regione (i csv per fare le mappe)
+        - numeroDiAbitanti.py #File con le funzioni per avere il rapporto tra abitanti Italiani e delle varie regioni
       - templates
-        - update.html
-      - applications.py
-      - requirements.txt
-    - Covid19UltimoGiorno
-      - .venv
-      - __pycache__
-      - libreria
-        - __pycache__
-        - graficiCovid.py
-        - graficiCovidRegionePerRegione.py
-        - graficiCovidSettimanali.py
-        - mappaCovid.py
-        - numeroDiAbitanti.py
-      - templates
-        - update.html
-      - application.py
-      - requirements.txt
-    - FileAWS
-      - libreria
-        - __pycache__
-        - graficiCovid.py
-        - graficiCovidRegionePerRegione.py
-        - graficiCovidSettimanali.py
-        - mappaCovid.py
-        - numeroDiAbitanti.py
-      - templates
-        - update.html
-      - application.py
-      - requirements.txt
-    - docs
-      - logos.png
-    - templatesGoogleSite
-      - deceduti.html
-      - decedutiSettimanali.html
-      - intensiva.html
-      - intensivaSettimanale.html
-      - letalita.html
-      - mappaDeceduti.html
-      - mappaIntensiva.html
-      - mappaNonIntensiva.html
-      - mappaRapportoTamponiMolecolari.html
-      - mappaRapportoTamponiTotali.html
-      - nonIntensiva.html
-      - nonIntensivaSettimanale.html
-      - positiviSuMolecolari.html
-      - positiviSuTotali.html
-      - positiviSuTotaliSettimanali.html
-      - positiviSuMolecolariSettimanali.html
-    - README.md
-    - italy_shape.geojson
+        - update.html #File html necessario per AWS 
+      - application.py #Programma principale che esegue tutto il codice
+      - requirements.txt #File necessario per AWS contenente tutte le librerie python utilizzate
+    - FileAWS #Cartella contenente soltanto i file necessari per l'esecuzione automatica su AWS
+      - libreria #La stessa libreria di covid19UltimoGiorno
+        - graficiCovid.py #Stesso file di covid19UltimoGiorno
+        - graficiCovidRegionePerRegione.py #Stesso file di covid19UltimoGiorno
+        - graficiCovidSettimanali.py #Stesso file di covid19UltimoGiorno
+        - mappaCovid.py #Stesso file di covid19UltimoGiorno
+        - numeroDiAbitanti.py #Stesso file di covid19UltimoGiorno
+      - templates #Stesso file di covid19UltimoGiorno
+        - update.htm #Stesso file di covid19UltimoGiornol
+      - application.py #Stesso file di covid19UltimoGiorno
+      - requirements.txt #Stesso file di covid19UltimoGiorno
+    - docs #Cartella con i file e altre immagini usate in questo readme
+      - logos.png #Il logo
+    - templatesGoogleSite #Cartella con un html per ogni mappa o grafico
+      - deceduti.html #Grafico per i deceduti giornalieri
+      - decedutiSettimanali.html #Grafico per i deceduti giornalieri settimanali
+      - intensiva.html #Grafico per i ricoveri in intensiva giornalieri
+      - intensivaSettimanale.html #Grafico per i ricoveri in intensiva settimanali
+      - letalita.html #Grafico per la letalità
+      - mappaDeceduti.html #Mappa per i deceduti
+      - mappaIntensiva.html #Mappa per le intensive
+      - mappaNonIntensiva.html #Mappa per i ricoveri ordinari
+      - mappaRapportoTamponiMolecolari.html #Mappa per il tasso di positività ai molecolari
+      - mappaRapportoTamponiTotali.html #Mappa per il tasso di positività a tutti i tamponi
+      - nonIntensiva.html #Grafico per i ricoveri ordinari giornalieri
+      - nonIntensivaSettimanale.html #Grafico per i ricoveri ordinari settimanali
+      - positiviSuMolecolari.html #Grafico per il tasso di positività giornaliero ai tamponi molecolari
+      - positiviSuTotali.html #Grafico per il tasso di positività giornaliero a tutti i tamponi
+      - positiviSuTotaliSettimanali.html #Grafico per il tasso di positività giornaliero ai tamponi molecolari
+      - positiviSuMolecolariSettimanali.html #Grafico per il tasso di positività settimanale ai tamponi molecolari
+    - README.md #Il file che state leggendo
+    - italy_shape.geojson #File contenente le coordinate per disegnare la mappa dell'Italia suddivisa per regioni
+    
+#Struttura del progetto
     
 
