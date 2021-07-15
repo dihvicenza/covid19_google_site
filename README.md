@@ -97,8 +97,36 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
       - application.py
       - requirements.txt
     - FileAWS
+      - libreria
+        - __pycache__
+        - graficiCovid.py
+        - graficiCovidRegionePerRegione.py
+        - graficiCovidSettimanali.py
+        - mappaCovid.py
+        - numeroDiAbitanti.py
+      - templates
+        - update.html
+      - application.py
+      - requirements.txt
     - docs
+      - logos.png
     - templatesGoogleSite
+      - deceduti.html
+      - decedutiSettimanali.html
+      - intensiva.html
+      - intensivaSettimanale.html
+      - letalita.html
+      - mappaDeceduti.html
+      - mappaIntensiva.html
+      - mappaNonIntensiva.html
+      - mappaRapportoTamponiMolecolari.html
+      - mappaRapportoTamponiTotali.html
+      - nonIntensiva.html
+      - nonIntensivaSettimanale.html
+      - positiviSuMolecolari.html
+      - positiviSuTotali.html
+      - positiviSuTotaliSettimanali.html
+      - positiviSuMolecolariSettimanali.html
     - README.md
     - italy_shape.geojson
     
