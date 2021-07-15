@@ -29,5 +29,13 @@ Qui viene visulizzata una sola mappa che rappresenta il numero di deceduti (il d
 
 ### 2. Andamento epidemia
 In questa sezione si possono visualizzare dei grafici interattivi che rappresentano l'evoluzione del virus nel tempo. 
+Questa parte è suddivisa a sua volta in tre sezioni:
+- La prima sezione è relativa ai dati giornalieri
+- La seconda sezione è relativa ai dati settimanali
+- La terza sezione è relativa alla letalità
+
+#### 2.1 Dati giornalieri
+Qui vengono rappresentati 5 grafici interattivi:
+- Il primo è realitvo alla percentuale dipositivi su tutti i tamponi effettuati (sono presenti due linee 
 
 
