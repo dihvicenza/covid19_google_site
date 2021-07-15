@@ -4,6 +4,13 @@
 
 ![license logo](docs/logos.png)
 
+## Indice
+
+1. [Struttura del sito](#struttura-del-sito)
+2. [Struttura della repository](#struttura-della-repository)
+
+
+# Struttura del sito
 Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?authuser=0) è suddiviso in due macroaree:
 
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
@@ -58,5 +65,5 @@ Anche qui vengono rappresentati 5 grafici interattivi, ma a differenza dei prece
 Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letalità dell'italia e di ciascuna regione (di default viene visualizzato il grafico italiano e quello veneto). Per ogni giornato il valore rappresentato è calcolato come rapporto percentuale tra tutti i deceduti a causa del coronavirus da inizio pandemia e il numero totale di positivi riscontrati fino a quel giorno.
 
 
-
+# Struttura della repository
 
