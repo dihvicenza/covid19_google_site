@@ -1,9 +1,16 @@
 # Andamento dell'epidemia da Covid19
 
->Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
+>Il progetto è parte del Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
 
 ![license logo](docs/logos.png)
 
+## Indice
+
+1. [Struttura del sito](#struttura-del-sito)
+2. [Struttura della repository](#struttura-della-repository)
+
+
+# Struttura del sito
 Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?authuser=0) è suddiviso in due macroaree:
 
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
@@ -58,5 +65,28 @@ Anche qui vengono rappresentati 5 grafici interattivi, ma a differenza dei prece
 Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letalità dell'italia e di ciascuna regione (di default viene visualizzato il grafico italiano e quello veneto). Per ogni giornato il valore rappresentato è calcolato come rapporto percentuale tra tutti i deceduti a causa del coronavirus da inizio pandemia e il numero totale di positivi riscontrati fino a quel giorno.
 
 
+# Struttura della repository
 
+
+    - Covid19DaInizioPandemia
+      - .venv
+      - __pycache__
+      - libreria
+        - __pycache__ 
+        - graficiCovid.py
+        - graficiCovidRegionePerRegione.py
+        - graficiCovidSettimanali.py
+        - mappaCovid.py
+        - numeroDiAbitanti.py
+      - templates
+        - update.html
+      - applications.py
+      - requirements.txt
+    - Covid19UltimoGiorno
+    - FileAWS
+    - docs
+    - templatesGoogleSite
+    - README.md
+    - italy_shape.geojson
+    
 
