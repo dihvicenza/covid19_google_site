@@ -1,6 +1,6 @@
 # Andamento dell'epidemia da Covid19
 
->Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
+>Il progetto è parte del Programma Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
 
 ![license logo](docs/logos.png)
 
@@ -66,4 +66,27 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
 
 
 # Struttura della repository
+
+
+    - Covid19DaInizioPandemia
+      - .venv
+      - __pycache__
+      - libreria
+        - __pycache__ 
+        - graficiCovid.py
+        - graficiCovidRegionePerRegione.py
+        - graficiCovidSettimanali.py
+        - mappaCovid.py
+        - numeroDiAbitanti.py
+      - templates
+        - update.html
+      - applications.py
+      - requirements.txt
+    - Covid19UltimoGiorno
+    - FileAWS
+    - docs
+    - templatesGoogleSite
+    - README.md
+    - italy_shape.geojson
+    
 
