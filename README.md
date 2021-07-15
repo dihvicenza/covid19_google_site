@@ -1,5 +1,9 @@
 # Andamento dell'epidemia da Covid19
 
+>Il progetto è parte del Operativo Regionale del Fondo Europeo di Sviluppo Regionale (POR FESR 2014 - 2020) del Veneto, nell'ambito del bando dell'azione 231 volto alla "costituzione di Innovation Lab diretti al consolidamento/sviluppo del network Centri P3@-Palestre Digitali e alla diffusione della cultura degli Open Data."
+
+![license logo](docs/logos.png)
+
 Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?authuser=0) è suddiviso in due macroaree:
 
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
@@ -49,3 +53,10 @@ Anche qui vengono rappresentati 5 grafici interattivi, ma a differenza dei prece
 - Il terzo è relativo alla variazione di ricoveri in terapia intensiva rispetto alla settimana precedente. In questo caso i dati regionali sono moltiplicati per il rapporto tra la popolazione italiana e la popolazione della regione considerata. Questo perché a differenza dei grafici precedenti, non vengono rappresentate percentuali, bensì valori assoluti e il confronto tra le varie regioni risentirebbe della popolazione delle stesse. In questo modo vengono stimati i dati regionali, supponendo tutte le regioni popolose quanto l'Italia.
 - Il quarto è relativo alla variazione di ricoveri nei reparti ordinari rispetto alla settimana precedente. Anche in questo caso, per lo stesso motivo, i valori regionali sono moltiplicati per il rapporto tra la popolazione italiana e quella della regione considerata. 
 -  Il quinto è relativo al numero di deceduti nell'ultima settimana. Anche in questo caso, per lo stesso motivo, i valori regionali sono moltiplicati per il rapporto tra la popolazione italiana e quella della regione considerata.
+
+#### 2.3 Letalità
+Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letalità dell'italia e di ciascuna regione (di default viene visualizzato il grafico italiano e quello veneto). Per ogni giornato il valore rappresentato è calcolato come rapporto percentuale tra tutti i deceduti a causa del coronavirus da inizio pandemia e il numero totale di positivi riscontrati fino a quel giorno.
+
+
+
+
