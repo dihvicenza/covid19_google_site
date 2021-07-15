@@ -68,9 +68,9 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
 # Struttura della repository
 
 
-    - Covid19DaInizioPandemia
-      - .venv
-      - __pycache__
+    - Covid19DaInizioPandemia #Cartella con il codice per generare i csv da inizio pandemia 
+      - .venv #environment per utilizzare flask e generare i requirements.txt
+      - __pycache__   #file gestito in autonomia da github
       - libreria
         - __pycache__ 
         - graficiCovid.py
