@@ -1,6 +1,6 @@
 # Andamento dell'epidemia da Covid19
 
-Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri-italiani/tassi?authuser=0) è suddiviso in due macroaree:
+Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?authuser=0) è suddiviso in due macroaree:
 
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
 2. Andamento epidemia dove è possibile osservare l'evoluzione dei dati pandemici a partire da inizio pandemia
