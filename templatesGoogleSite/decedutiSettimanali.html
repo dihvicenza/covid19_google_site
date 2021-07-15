@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="grafico1"></canvas> 
+</body>
+
+<script>
+    function originaGrafico(decedutiSettimanali){
+
+        var dataLabels = decedutiSettimanali.map(function(d) {
+            return d.Data
+        });
+
+        var decedutiSettimanaliItalia = decedutiSettimanali.map(function(d){
+            return +d.decedutiItalia
+        });
+        var decedutiSettimanaliVeneto = decedutiSettimanali.map(function(d){
+            return +d.decedutiVeneto
+        });
+
+
+        var decedutiSettimanaliAbruzzo = decedutiSettimanali.map(function(d){
+            return +d.decedutiAbruzzo
+        });
+
+        var decedutiSettimanaliBasilicata = decedutiSettimanali.map(function(d){
+            return +d.decedutiBasilicata
+        });
+
+        var decedutiSettimanaliCampania = decedutiSettimanali.map(function(d){
+            return +d.decedutiCampania
+        });
+
+        var decedutiSettimanaliCalabria = decedutiSettimanali.map(function(d){
+            return +d.decedutiCalabria
+        });
+
+        var decedutiSettimanaliEmiliaRomagna = decedutiSettimanali.map(function(d){
+            return +d.decedutiEmiliaRomagna
+        });
+
+        var decedutiSettimanaliFriuliVeneziaGiulia = decedutiSettimanali.map(function(d){
+            return +d.decedutiFriuliVeneziaGiulia
+        });
+
+        var decedutiSettimanaliLazio = decedutiSettimanali.map(function(d){
+            return +d.decedutiLazio
+        });
+
+        var decedutiSettimanaliLiguria = decedutiSettimanali.map(function(d){
+            return +d.decedutiLiguria
+        });
+
+        var decedutiSettimanaliLombardia = decedutiSettimanali.map(function(d){
+            return +d.decedutiLombardia
+        });
+
+        var decedutiSettimanaliMarche = decedutiSettimanali.map(function(d){
+            return +d.decedutiMarche
+        });
+
+        var decedutiSettimanaliMolise = decedutiSettimanali.map(function(d){
+            return +d.decedutiMolise
+        });
+
+        var decedutiSettimanaliBolzano = decedutiSettimanali.map(function(d){
+            return +d.decedutiAltoAdige
+        });
+
+        var decedutiSettimanaliTrento = decedutiSettimanali.map(function(d){
+            return +d.decedutiTrentino
+        });
+
+        var decedutiSettimanaliPiemonte = decedutiSettimanali.map(function(d){
+            return +d.decedutiPiemonte
+        });
+
+        var decedutiSettimanaliPuglia = decedutiSettimanali.map(function(d){
+            return +d.decedutiPuglia
+        });
+
+        var decedutiSettimanaliSardegna = decedutiSettimanali.map(function(d){
+            return +d.decedutiSardegna
+        });
+
+
+        var decedutiSettimanaliSicilia = decedutiSettimanali.map(function(d){
+            return +d.decedutiSicilia
+        });
+
+        var decedutiSettimanaliToscana = decedutiSettimanali.map(function(d){
+            return +d.decedutiToscana
+        });
+
+        var decedutiSettimanaliUmbria = decedutiSettimanali.map(function(d){
+            return +d.decedutiUmbria
+        });
+
+        var decedutiSettimanaliValleDAosta = decedutiSettimanali.map(function(d){
+            return +d.decedutiValleDAosta
+        });
+
+        var data= {
+            labels : dataLabels,
+            datasets: [
+            {
+                label: 'Italia',    //legenda
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0, 255)',
+
+                //Mettere data qui
+                pointHitRadius: 20,
+                data: decedutiSettimanaliItalia,
+            },
+            {
+                label: 'Veneto per 12.2',    //legenda
+                backgroundColor: 'rgb(255, 0, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 0)',
+
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliVeneto,
+            },
+            {
+                label: 'Abruzzo per 46.1',    //legenda
+                backgroundColor: 'rgb(0, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliAbruzzo,
+                hidden:true
+            },
+            {
+                label: 'Basilicata per 107.8',    //legenda
+                backgroundColor: 'rgb(255, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliBasilicata,
+                hidden:true
+            },
+            {
+                label: 'Calabria per 31.5',    //legenda
+                backgroundColor: 'rgb(255, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliCalabria,
+                hidden:true
+            },
+            {
+                label: 'Campania per 10.4',    //legenda
+                backgroundColor: 'rgb(0, 255, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliCampania,
+                hidden:true
+            },
+            {
+                label: 'Emilia-Romagna per 13.4',    //legenda
+                backgroundColor: 'rgb(0, 0,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliEmiliaRomagna,
+                hidden:true
+            },
+            {
+                label: 'Friuli Venezia Giulia per 49.4',    //legenda
+                backgroundColor: 'rgb(255, 128,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 128,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliFriuliVeneziaGiulia,
+                hidden:true
+            },
+            {
+                label: 'Lazio per 10.4',    //legenda
+                backgroundColor: 'rgb(0, 102,51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 102,51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliLazio,
+                hidden:true
+            },
+            {
+                label: 'Liguria per 39.1',    //legenda
+                backgroundColor: 'rgb(124, 20,103)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(124, 20,103)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliLiguria,
+                hidden:true
+            },
+            {
+                label: 'Lombardia per 5.9',    //legenda
+                backgroundColor: 'rgb(153, 76,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 76,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliLombardia,
+                hidden:true
+            },
+            {
+                label: 'Marche per 39.4',    //legenda
+                backgroundColor: 'rgb(255, 0,127)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0,127)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliMarche,
+                hidden:true
+            },
+            {
+                label: 'Molise per 198.5',    //legenda
+                backgroundColor: 'rgb(0, 153,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 153,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliMolise,
+                hidden:true
+            },
+            {
+                label: 'P.A Bolzano per 112.0',    //legenda
+                backgroundColor: 'rgb(0, 191,255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 191,255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliBolzano,
+                hidden:true
+            },
+            {
+                label: 'P.A. Trento per 109.3',    //legenda
+                backgroundColor: 'rgb(128, 128,128)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(128, 128,128)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliTrento,
+                hidden:true
+            },
+            {
+                label: 'Piemonte per 13.8',    //legenda
+                backgroundColor: 'rgb(178, 34,34)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(178, 34,34)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliPiemonte,
+                hidden:true
+            },
+            {
+                label: 'Puglia per 15.1',    //legenda
+                backgroundColor: 'rgb(0, 0,139)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,139)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliPuglia,
+                hidden:true
+            },
+            {
+                label: 'Sardegna per 37.0',    //legenda
+                backgroundColor: 'rgb(153, 122,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 122,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliSardegna,
+                hidden:true
+            },
+            {
+                label: 'Sicilia per 12.2',    //legenda
+                backgroundColor: 'rgb(255, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliSicilia,
+                hidden:true
+            },
+            {
+                label: 'Toscana per 16.2',    //legenda
+                backgroundColor: 'rgb(204, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliToscana,
+                hidden:true
+            },
+            {
+                label: 'Umbria per 68.5',    //legenda
+                backgroundColor: 'rgb(255, 184, 51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 184, 51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliUmbria,
+                hidden:true
+            },
+            {
+                label: "Valle d'Aosta per 477.0",    //legenda
+                backgroundColor: 'rgb(204, 0,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 0,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiSettimanaliValleDAosta,
+                hidden:true
+            },
+
+            ]
+        };
+
+        // Configurare le opzioni
+        var options = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                    position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: "Deceduti"
+                    }
+
+                },
+                elements: {
+                    point: {radius: 0}
+                },
+                scales: {
+                    x: {grid:{display:false}},
+                    y: {title:{text : "Numero deceduti", display : true}}
+                }
+        };
+
+
+        var config = {
+            type : 'line',
+            data,
+            options
+        };
+
+        var myChart = new Chart('grafico1', config);
+
+    }
+    d3.csv('https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliItaliaEVeneto.csv').then(originaGrafico);
+</script>
+
+</html>

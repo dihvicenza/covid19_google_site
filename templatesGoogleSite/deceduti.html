@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="grafico1"></canvas> 
+</body>
+
+<script>
+    function originaGrafico(decedutiGiornalieri){
+
+        var dataLabels = decedutiGiornalieri.map(function(d) {
+            return d.Data
+        });
+
+        var decedutiGiornalieriItalia = decedutiGiornalieri.map(function(d){
+            return +d.decedutiInItalia
+        });
+        var decedutiGiornalieriVeneto = decedutiGiornalieri.map(function(d){
+            return +d.decedutiInVenetoPopolosoQuantoItalia
+        });
+
+        var data= {
+            labels : dataLabels,
+            datasets: [
+            {
+                label: 'Italia',    //legenda
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0, 255)',
+
+                //Mettere data qui
+                pointHitRadius: 20,
+                data: decedutiGiornalieriItalia,
+            },
+            {
+                label: 'Veneto per 12.2',    //legenda
+                backgroundColor: 'rgb(255, 0, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 0)',
+
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: decedutiGiornalieriVeneto,
+            }
+            ]
+        };
+
+        // Configurare le opzioni
+        var options = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                    position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: "Deceduti Italia e Veneto"
+                    }
+
+                },
+                elements: {
+                    point: {radius: 0}
+                },
+                scales: {
+                    x: {grid:{display:false}},
+                    y: {title:{text : "Numero deceduti", display : true}}
+                }
+        };
+
+
+        var config = {
+            type : 'line',
+            data,
+            options
+        };
+
+        var myChart = new Chart('grafico1', config);
+
+    }
+    d3.csv('https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiItaliaEVeneto.csv').then(originaGrafico);
+</script>
+
+</html>

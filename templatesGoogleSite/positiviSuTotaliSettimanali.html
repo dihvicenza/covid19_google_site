@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="grafico1"></canvas> 
+</body>
+
+<script>
+    function originaGrafico(positiviSuTotaliSettimanali){
+
+        var dataLabels = positiviSuTotaliSettimanali.map(function(d) {
+            return d.Data
+        });
+
+        var positiviSuTotaliSettimanaliItalia = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPositivitaAiTamponiTotaliItalia
+        });
+        var positiviSuTotaliSettimanaliVeneto = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPositivitaAiTamponiTotaliVeneto
+        });
+
+        var positiviSuTotaliSettimanaliAbruzzo = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliAbruzzo
+        });
+
+        var positiviSuTotaliSettimanaliBasilicata = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliBasilicata
+        });
+
+        var positiviSuTotaliSettimanaliCampania = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliCampania
+        });
+
+        var positiviSuTotaliSettimanaliCalabria = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliCalabria
+        });
+
+        var positiviSuTotaliSettimanaliEmiliaRomagna = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliEmiliaRomagna
+        });
+
+        var positiviSuTotaliSettimanaliFriuliVeneziaGiulia = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliFriuliVeneziaGiulia
+        });
+
+        var positiviSuTotaliSettimanaliLazio = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliLazio
+        });
+
+        var positiviSuTotaliSettimanaliLiguria = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliLiguria
+        });
+
+        var positiviSuTotaliSettimanaliLombardia = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliLombardia
+        });
+
+        var positiviSuTotaliSettimanaliMarche = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliMarche
+        });
+
+        var positiviSuTotaliSettimanaliMolise = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliMolise
+        });
+
+        var positiviSuTotaliSettimanaliBolzano = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliAltoAdige
+        });
+
+        var positiviSuTotaliSettimanaliTrento = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliTrentino
+        });
+
+        var positiviSuTotaliSettimanaliPiemonte = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliPiemonte
+        });
+
+        var positiviSuTotaliSettimanaliPuglia = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliPuglia
+        });
+
+        var positiviSuTotaliSettimanaliSardegna = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliSardegna
+        });
+
+
+        var positiviSuTotaliSettimanaliSicilia = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliSicilia
+        });
+
+        var positiviSuTotaliSettimanaliToscana = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliToscana
+        });
+
+        var positiviSuTotaliSettimanaliUmbria = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliUmbria
+        });
+
+        var positiviSuTotaliSettimanaliValleDAosta = positiviSuTotaliSettimanali.map(function(d){
+            return +d.TassoDiPostitivitaAiTamponiTotaliValleDAosta
+        });
+
+
+
+
+
+        var data= {
+            labels : dataLabels,
+            datasets: [
+            {
+                label: 'Italia',    //legenda
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0, 255)',
+                //Mettere data qui
+                pointHitRadius: 20,
+                data: positiviSuTotaliSettimanaliItalia,
+            },
+            {
+                label: 'Veneto',    //legenda
+                backgroundColor: 'rgb(255, 0, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliVeneto,
+            },
+            {
+                label: 'Abruzzo',    //legenda
+                backgroundColor: 'rgb(0, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliAbruzzo,
+                hidden:true
+            },
+            {
+                label: 'Basilicata',    //legenda
+                backgroundColor: 'rgb(255, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliBasilicata,
+                hidden:true
+            },
+            {
+                label: 'Calabria',    //legenda
+                backgroundColor: 'rgb(255, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliCalabria,
+                hidden:true
+            },
+            {
+                label: 'Campania',    //legenda
+                backgroundColor: 'rgb(0, 255, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliCampania,
+                hidden:true
+            },
+            {
+                label: 'Emilia Romagna',    //legenda
+                backgroundColor: 'rgb(0, 0,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliEmiliaRomagna,
+                hidden:true
+            },
+            {
+                label: 'Friuli Venezia Giulia',    //legenda
+                backgroundColor: 'rgb(255, 128,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 128,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliFriuliVeneziaGiulia,
+                hidden:true
+            },
+            {
+                label: 'Lazio',    //legenda
+                backgroundColor: 'rgb(0, 102,51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 102,51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliLazio,
+                hidden:true
+            },
+            {
+                label: 'Liguria',    //legenda
+                backgroundColor: 'rgb(124, 20,103)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(124, 20,103)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliLiguria,
+                hidden:true
+            },
+            {
+                label: 'Lombardia',    //legenda
+                backgroundColor: 'rgb(153, 76,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 76,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliLombardia,
+                hidden:true
+            },
+            {
+                label: 'Marche',    //legenda
+                backgroundColor: 'rgb(255, 0,127)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0,127)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliMarche,
+                hidden:true
+            },
+            {
+                label: 'Molise',    //legenda
+                backgroundColor: 'rgb(0, 153,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 153,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliMolise,
+                hidden:true
+            },
+            {
+                label: 'P.A Bolzano',    //legenda
+                backgroundColor: 'rgb(0, 191,255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 191,255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliBolzano,
+                hidden:true
+            },
+            {
+                label: 'P.A. Trento',    //legenda
+                backgroundColor: 'rgb(128, 128,128)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(128, 128,128)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliTrento,
+                hidden:true
+            },
+            {
+                label: 'Piemonte',    //legenda
+                backgroundColor: 'rgb(178, 34,34)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(178, 34,34)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliPiemonte,
+                hidden:true
+            },
+            {
+                label: 'Puglia',    //legenda
+                backgroundColor: 'rgb(0, 0,139)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,139)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliPuglia,
+                hidden:true
+            },
+            {
+                label: 'Sardegna',    //legenda
+                backgroundColor: 'rgb(153, 122,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 122,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliSardegna,
+                hidden:true
+            },
+            {
+                label: 'Sicilia',    //legenda
+                backgroundColor: 'rgb(255, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliSicilia,
+                hidden:true
+            },
+            {
+                label: 'Toscana',    //legenda
+                backgroundColor: 'rgb(204, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliToscana,
+                hidden:true
+            },
+            {
+                label: 'Umbria',    //legenda
+                backgroundColor: 'rgb(255, 184, 51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 184, 51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliUmbria,
+                hidden:true
+            },
+            {
+                label: "Valle d'Aosta",    //legenda
+                backgroundColor: 'rgb(204, 0,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 0,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: positiviSuTotaliSettimanaliValleDAosta,
+                hidden:true
+            },
+            ]
+        };
+
+        // Configurare le opzioni
+        var options = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                    position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tasso di positività ai tamponi totali'
+                    }
+
+                },
+                elements: {
+                    point: {radius: 0}
+                },
+                scales: {
+                    x: {grid:{display:false}},
+                    y: {title:{text : "Percentuale", display : true}}
+                }
+        };
+
+
+        var config = {
+            type : 'line',
+            data,
+            options
+        };
+
+        var myChart = new Chart('grafico1', config);
+
+    }
+    d3.csv('https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliTamponiTotaliItaliaEVeneto.csv').then(originaGrafico);
+</script>
+
+</html>

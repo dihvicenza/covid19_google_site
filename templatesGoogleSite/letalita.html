@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+ 
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="grafico1"></canvas> 
+</body>
+
+<script>
+    function originaGrafico(letalita){
+
+        var dataLabels = letalita.map(function(d) {
+            return d.Data
+        });
+
+        var letalitaItalia = letalita.map(function(d){
+            return +d.letalitaItaliana
+        });
+        var letalitaVeneto = letalita.map(function(d){
+            return +d.letalitaVeneta
+        });
+
+        var letalitaAbruzzo = letalita.map(function(d){
+            return +d.letalitaAbruzzo
+        });
+
+        var letalitaBasilicata = letalita.map(function(d){
+            return +d.letalitaBasilicata
+        });
+
+        var letalitaCampania = letalita.map(function(d){
+            return +d.letalitaCampania
+        });
+
+        var letalitaCalabria = letalita.map(function(d){
+            return +d.letalitaCalabria
+        });
+
+        var letalitaEmiliaRomagna = letalita.map(function(d){
+            return +d.letalitaEmiliaRomagna
+        });
+
+        var letalitaFriuliVeneziaGiulia = letalita.map(function(d){
+            return +d.letalitaFriuliVeneziaGiulia
+        });
+
+        var letalitaLazio = letalita.map(function(d){
+            return +d.letalitaLazio
+        });
+
+        var letalitaLiguria = letalita.map(function(d){
+            return +d.letalitaLiguria
+        });
+
+        var letalitaLombardia = letalita.map(function(d){
+            return +d.letalitaLombardia
+        });
+
+        var letalitaMarche = letalita.map(function(d){
+            return +d.letalitaMarche
+        });
+
+        var letalitaMolise = letalita.map(function(d){
+            return +d.letalitaMolise
+        });
+
+        var letalitaBolzano = letalita.map(function(d){
+            return +d.letalitaAltoAdige
+        });
+
+        var letalitaTrento = letalita.map(function(d){
+            return +d.letalitaTrentino
+        });
+
+        var letalitaPiemonte = letalita.map(function(d){
+            return +d.letalitaPiemonte
+        });
+
+        var letalitaPuglia = letalita.map(function(d){
+            return +d.letalitaPuglia
+        });
+
+        var letalitaSardegna = letalita.map(function(d){
+            return +d.letalitaSardegna
+        });
+
+
+        var letalitaSicilia = letalita.map(function(d){
+            return +d.letalitaSicilia
+        });
+
+        var letalitaToscana = letalita.map(function(d){
+            return +d.letalitaToscana
+        });
+
+        var letalitaUmbria = letalita.map(function(d){
+            return +d.letalitaUmbria
+        });
+
+        var letalitaValleDAosta = letalita.map(function(d){
+            return +d.letalitaValleDAosta
+        });
+
+        var data= {
+            labels : dataLabels,
+            datasets: [
+            {
+                label: 'Italia',    //legenda
+                backgroundColor: 'rgb(0, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0, 255)',
+
+                //Mettere data qui
+                pointHitRadius: 20,
+                data: letalitaItalia,
+            },
+            {
+                label: 'Veneto',    //legenda
+                backgroundColor: 'rgb(255, 0, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 0)',
+
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaVeneto,
+            },
+            {
+                label: 'Abruzzo',    //legenda
+                backgroundColor: 'rgb(0, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaAbruzzo,
+                hidden:true
+            },
+            {
+                label: 'Basilicata',    //legenda
+                backgroundColor: 'rgb(255, 255, 0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 255, 0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaBasilicata,
+                hidden:true
+            },
+            {
+                label: 'Calabria',    //legenda
+                backgroundColor: 'rgb(255, 0, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaCalabria,
+                hidden:true
+            },
+            {
+                label: 'Campania',    //legenda
+                backgroundColor: 'rgb(0, 255, 255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 255, 255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaCampania,
+                hidden:true
+            },
+            {
+                label: 'Emilia-Romagna',    //legenda
+                backgroundColor: 'rgb(0, 0,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaEmiliaRomagna,
+                hidden:true
+            },
+            {
+                label: 'Friuli Venezia Giulia',    //legenda
+                backgroundColor: 'rgb(255, 128,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 128,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaFriuliVeneziaGiulia,
+                hidden:true
+            },
+            {
+                label: 'Lazio',    //legenda
+                backgroundColor: 'rgb(0, 102,51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 102,51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaLazio,
+                hidden:true
+            },
+            {
+                label: 'Liguria',    //legenda
+                backgroundColor: 'rgb(124, 20,103)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(124, 20,103)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaLiguria,
+                hidden:true
+            },
+            {
+                label: 'Lombardia',    //legenda
+                backgroundColor: 'rgb(153, 76,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 76,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaLombardia,
+                hidden:true
+            },
+            {
+                label: 'Marche',    //legenda
+                backgroundColor: 'rgb(255, 0,127)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 0,127)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaMarche,
+                hidden:true
+            },
+            {
+                label: 'Molise',    //legenda
+                backgroundColor: 'rgb(0, 153,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 153,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaMolise,
+                hidden:true
+            },
+            {
+                label: 'P.A Bolzano',    //legenda
+                backgroundColor: 'rgb(0, 191,255)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 191,255)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaBolzano,
+                hidden:true
+            },
+            {
+                label: 'P.A. Trento',    //legenda
+                backgroundColor: 'rgb(128, 128,128)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(128, 128,128)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaTrento,
+                hidden:true
+            },
+            {
+                label: 'Piemonte',    //legenda
+                backgroundColor: 'rgb(178, 34,34)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(178, 34,34)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaPiemonte,
+                hidden:true
+            },
+            {
+                label: 'Puglia',    //legenda
+                backgroundColor: 'rgb(0, 0,139)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(0, 0,139)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaPuglia,
+                hidden:true
+            },
+            {
+                label: 'Sardegna',    //legenda
+                backgroundColor: 'rgb(153, 122,0)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(153, 122,0)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaSardegna,
+                hidden:true
+            },
+            {
+                label: 'Sicilia',    //legenda
+                backgroundColor: 'rgb(255, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaSicilia,
+                hidden:true
+            },
+            {
+                label: 'Toscana',    //legenda
+                backgroundColor: 'rgb(204, 204,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 204,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaToscana,
+                hidden:true
+            },
+            {
+                label: 'Umbria',    //legenda
+                backgroundColor: 'rgb(255, 184, 51)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(255, 184, 51)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaUmbria,
+                hidden:true
+            },
+            {
+                label: "Valle d'Aosta",    //legenda
+                backgroundColor: 'rgb(204, 0,204)',
+                borderWidth: 1.5,
+                borderColor: 'rgb(204, 0,204)',
+                pointHitRadius: 20,
+                //Mettere data qui
+                data: letalitaValleDAosta,
+                hidden:true
+            },
+            ]
+        };
+
+        // Configurare le opzioni
+        var options = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                    position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tasso di letaltà'
+                    }
+
+                },
+                elements: {
+                    point: {radius: 0}
+                },
+                scales: {
+                    x: {grid:{display:false}}
+                    
+                }
+        };
+
+
+        var config = {
+            type : 'line',
+            data,
+            options
+        };
+
+        var myChart = new Chart('grafico1', config);
+
+    }
+    d3.csv('https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiItaliaEVeneto.csv').then(originaGrafico);
+</script>
+
+</html>

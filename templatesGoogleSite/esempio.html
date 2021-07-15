@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myChart"></canvas> 
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      
+      // Mettere labels
+      var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+
+      var data= {
+        labels : labels,
+        datasets: [
+          {
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+
+          //Mettere data qui
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+        {
+          label : 'Se non funziona',
+          backgroundColor: 'rgb(128, 199, 232)',
+          borderColor: 'rgb(85, 99, 63)',
+          data : [8,12,36,5,57,5,60]
+        }
+      ]
+        };
+
+        // Configurare le opzioni
+        var options = {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Line Chart'
+            }
+          }
+        };
+        
+        var config = {
+            type : 'line',
+            data,
+            options
+        };
+
+      var myChart = new Chart(ctx, config);
+
+    </script>
+</body>
+</html>
