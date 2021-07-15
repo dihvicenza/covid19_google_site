@@ -83,6 +83,19 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
       - applications.py
       - requirements.txt
     - Covid19UltimoGiorno
+      - .venv
+      - __pycache__
+      - libreria
+        - __pycache__
+        - graficiCovid.py
+        - graficiCovidRegionePerRegione.py
+        - graficiCovidSettimanali.py
+        - mappaCovid.py
+        - numeroDiAbitanti.py
+      - templates
+        - update.html
+      - application.py
+      - requirements.txt
     - FileAWS
     - docs
     - templatesGoogleSite
