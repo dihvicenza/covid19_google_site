@@ -14,7 +14,7 @@
 
 
 
-# Struttura del sito
+## Struttura del sito
 Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?authuser=0) è suddiviso in due macroaree:
 
 1. Dati giornalieri dove è possibile vedere i dati relativi a singole giornate
@@ -71,7 +71,7 @@ Anche qui vengono rappresentati 5 grafici interattivi, ma a differenza dei prece
 Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letalità dell'italia e di ciascuna regione (di default viene visualizzato il grafico italiano e quello veneto). Per ogni giornato il valore rappresentato è calcolato come rapporto percentuale tra tutti i deceduti a causa del coronavirus da inizio pandemia e il numero totale di positivi riscontrati fino a quel giorno.
 
 
-# Struttura della repository
+## Struttura della repository
 
 
     - Covid19DaInizioPandemia # Cartella con il codice per generare i csv da inizio pandemia 
@@ -131,11 +131,11 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
     - README.md #Il file che state leggendo
     - italy_shape.geojson # File contenente le coordinate per disegnare la mappa dell'Italia suddivisa per regioni
     
-# OpenData utilizzati 
+## OpenData utilizzati 
 
-# Funzionamento della webapp
+## Funzionamento della webapp
 
-# Hardware e software necessari
+## Hardware e software necessari
 
     
 
