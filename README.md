@@ -7,10 +7,15 @@
 ## Indice
 
 1. [Struttura del sito](#struttura-del-sito)
+    - [Dati giornalieri](#datiGiornalieri)
+    - [Andamento epidemia](#andamentoEpidemia)
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
-5. [Hardware e software necessari](#hardware_e_software_utilizzati)
+    - [Cartella CovidDaInizioPandemia](#covidDaInizioPandemia)
+    - [Cartella CovidUltimoGiorno](#covidUltimoGiorno)
+    - [GoogleSite](#googleSite)
+5. [Hardware e software necessari](#hardware-e-software-necessari)
 
 
 
@@ -22,7 +27,7 @@ Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?aut
 
 Il sito si aggiorna in maniera automatica ogni giorno alle ore 19:00
 
-### 1. Dati giornalieri
+### 1. Dati giornalieri <a name="datiGiornalieri"></a>
 In questa sezione si possono visualizzare delle mappe interattive che rappresentano l'Italia suddivisa regione per regione (Trentino e Alto-Adige sono considerate due regioni distinte) e cliccando su una regione si vede il dato relativo alla regione selezionata e il dato Italiano. Ogni regione viene colorata di bianco, giallo, arancione o rosso a seconda del valore del dato considerato. Di default viene visualizzata l'ultima giornata e dei paramentri fissati determinano la colorazione della mappa. Tuttavia, è possibile cambiare sia la data che i paramentri.
 
 Questa sezione è suddivisa a sua volta in tre aree:
@@ -44,7 +49,7 @@ Anche qui vengono rappresentate due mappe:
 #### 1.3 Deceduti regione per regione
 Qui viene visulizzata una sola mappa che rappresenta il numero di deceduti (il dato italiano è diviso per 21 in modo tale da confrontare ogni regione con la media regionale)
 
-### 2. Andamento epidemia
+### 2. Andamento epidemia <a name="andamentoEpidemia"></a>
 In questa sezione si possono visualizzare dei grafici interattivi che rappresentano l'evoluzione del virus nel tempo. 
 Questa parte è suddivisa a sua volta in tre sezioni:
 - La prima sezione è relativa ai dati giornalieri
@@ -132,8 +137,27 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
     - italy_shape.geojson # File contenente le coordinate per disegnare la mappa dell'Italia suddivisa per regioni
     
 ## OpenData utilizzati 
+I grafici sono stati realizzati tramite un'elaborazione degli open data pubblicati ogni pomeriggio dalla Protezione Civile e reperibili al seguente link github: https://github.com/pcm-dpc/COVID-19.
+
+In particolare giorno per giorno utilizziamo il file denominato "dpc-covid19-ita-regioni.csv "  che si trova nella  sottocartella  "dati-regioni".
+
+Abbiamo utilizzato anche il dataset "popolazione-istat-regione-range.csv" che si trova nella sottocartella "dati-statistici-riferimento". In quest'ultimo file abbiamo trovato il numero di abitanti regione per regione e abbiamo potuto calcolare il rapporto tra gli abitanti italiani e gli abitanti di ciascuna regione. In questo modo abbiamo potuto confrontare in maniera più significativa i dati regionali e quelli italiani relativi agli ingressi in terapia intensiva, agli ingressi nei reparti ordinari e al numero di deceduti. Infatti, abbiamo moltiplicato i dati della regione considerata per il rapporto tra la popolazione italiana e la popolazione della regione ottenendo una stima dei numeri che avrebbe avuto la regione in esame se fosse popolosa quanto l'Italia. (Senza tale calcolo il confronto non sarebbe significativo in quanto la popolazione di una singola regione è nettamente inferiore a quella italiana)
 
 ## Funzionamento della webapp
+#### Cartella CovidDaInizioPandemia <a name="covidDaInizioPandemia"></a>
+In questa cartella è presente il codice che legge i csv caricati dalla Protezione Civile, ne elabora i dati, genera dei nuovi csv in cui ci sono i dati da inizio pandemia fino all'ultimo giorno che vengono utilizzati dai grafici presenti nel sito. Questi csv vengono salvati su una repository pubblica di GitHub (https://github.com/DigitalChriAri/Covid). 
+I codici contenuti in questa cartella vengono eseguiti lanciando il file application.py dal terminale.
+
+**NOTA**: Questo è già stato eseguito da noi manualmente per avere i dati completi da inizio pandemia e non necessita di essere rieseguito a meno che che non ci siano problemi o si perda qualche dato. (Per esempio se la Protezione Civile aggiorna i csv dopo le 19:00)
+
+#### Cartella CovidUltimoGiorno <a name="covidUltimoGiorno"></a>
+In questa cartella è presente il codice che legge i csv caricati dalla Protezione Civile, ne elabora i dati, genera un csv per la mappa relativo all'ultimo giorno e aggiorna i csv contenenti i dati settimanali e giornalieri aggiungendo una riga relativa all'ultimo giorno/settimana (la riga nel csv settimanale viene aggiunta solo di domenica).
+ 
+La lettura e l'elaborazione dei dati deve avvenire quotidianamente dopo la pubblicazione dei dati da parte della Protezione Civile. A tal fine una cartella zip contenente i file della cartella 'FileAWS' viene caricata su AWS (Amazon Web Server, https://aws.amazon.com/console) e un chron-job (https://cron-job.org/en/) esegue il file application.py ogni giorno alle ore 19:00.
+
+#### GoogleSite <a name="googleSite"></a>
+Il sito web è stato sviluppato utilizzando la piattaforma GoogleSite. Ogni volta che è presente un grafico, questo è stato realizzato incorporando un codice html  (che si trova nella cartella templatesGoogleSite) che utilizza la libreria ChartJS di JavaScript. Questo codice legge dalla nostra repository Github il csv che si trova all'url indicato nel file html ed elabora il grafico. In questo modo, ogni volta che i csv vengono aggiornati tramite il chron-job, in automatico si aggiornano anche i grafici.
+
 
 ## Hardware e software necessari
 
