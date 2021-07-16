@@ -139,6 +139,16 @@ In particolare giorno per giorno utilizziamo il file denominato "dpc-covid19-ita
 Abbiamo utilizzato anche il dataset "popolazione-istat-regione-range.csv" che si trova nella sottocartella "dati-statistici-riferimento". In quest'ultimo file abbiamo trovato il numero di abitanti regione per regione e abbiamo potuto calcolare il rapporto tra gli abitanti italiani e gli abitanti di ciascuna regione. In questo modo abbiamo potuto confrontare in maniera più significativa i dati regionali e quelli italiani relativi agli ingressi in terapia intensiva, agli ingressi nei reparti ordinari e al numero di deceduti. Infatti, abbiamo moltiplicato i dati della regione considerata per il rapporto tra la popolazione italiana e la popolazione della regione ottenendo una stima dei numeri che avrebbe avuto la regione in esame se fosse popolosa quanto l'Italia. (Senza tale calcolo il confronto non sarebbe significativo in quanto la popolazione di una singola regione è nettamente inferiore a quella italiana)
 
 ## Funzionamento della webapp
+#### Cartella CovidDaInizioPandemia
+In questa cartella è presente il codice che legge i csv caricati dalla Protezione Civile, ne elabora i dati, genera dei nuovi csv in cui ci sono i dati da inizio pandemia fino all'ultimo giorno che vengono utilizzati dai grafici presenti nel sito. Questi csv vengono salvati su una repository pubblica di GitHub (https://github.com/DigitalChriAri/Covid). 
+I codici contenuti in questa cartella vengono eseguiti lanciando il file application.py dal terminale.
+
+**NOTA**: Questo è già stato eseguito da noi manualmente per avere i dati completi da inizio pandemia e non necessita di essere rieseguito a meno che che non ci siano problemi o si perda qualche dato. (Per esempio se la Protezione Civile aggiorna i csv dopo le 19:00)
+
+#### Cartella CovidUltimoGiorno
+
+
+
 
 ## Hardware e software necessari
 
