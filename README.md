@@ -10,7 +10,7 @@
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
-5. [Hardware e software necessari](#hardware-e-software-utilizzati)
+5. [Hardware e software necessari](#hardware-e-software-necessari)
 
 
 
