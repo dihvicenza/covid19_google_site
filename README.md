@@ -7,11 +7,14 @@
 ## Indice
 
 1. [Struttura del sito](#struttura-del-sito)
-    - [Dati giornalieri](#datiGiornalieri)
+    - [Dati giornalieri](#dati-giornalieri)
     - [Andamento epidemia](#andamentoEpidemia)
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
+    -[Cartella CovidDaInizioPandemia](#covidDaInizioPandemia)
+    -[Cartella CovidUltimoGiorno](#covidUltimoGiorno)
+    -[GoogleSite](#GoogleSite)
 5. [Hardware e software necessari](#hardware-e-software-necessari)
 
 
