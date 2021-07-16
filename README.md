@@ -10,7 +10,7 @@
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
-5. [Hardware e software necessari](#hardware_e_software_utilizzati)
+5. [Hardware e software necessari](#hardware-e-software-utilizzati)
 
 
 
@@ -146,8 +146,12 @@ I codici contenuti in questa cartella vengono eseguiti lanciando il file applica
 **NOTA**: Questo è già stato eseguito da noi manualmente per avere i dati completi da inizio pandemia e non necessita di essere rieseguito a meno che che non ci siano problemi o si perda qualche dato. (Per esempio se la Protezione Civile aggiorna i csv dopo le 19:00)
 
 #### Cartella CovidUltimoGiorno
+In questa cartella è presente il codice che legge i csv caricati dalla Protezione Civile, ne elabora i dati, genera un csv per la mappa relativo all'ultimo giorno e aggiorna i csv contenenti i dati settimanali e giornalieri aggiungendo una riga relativa all'ultimo giorno/settimana (la riga nel csv settimanale viene aggiunta solo di domenica).
+ 
+La lettura e l'elaborazione dei dati deve avvenire quotidianamente dopo la pubblicazione dei dati da parte della Protezione Civile. A tal fine una cartella zip contenente i file della cartella 'FileAWS' viene caricata su AWS (Amazon Web Server, https://aws.amazon.com/console) e un chron-job (https://cron-job.org/en/) esegue il file application.py ogni giorno alle ore 19:00.
 
-
+#### GoogleSite
+Il sito web è stato sviluppato utilizzando la piattaforma GoogleSite. Ogni volta che è presente un grafico, questo è stato realizzato incorporando un codice html  (che si trova nella cartella templatesGoogleSite) che utilizza la libreria ChartJS di JavaScript. Questo codice legge dalla nostra repository Github il csv che si trova all'url indicato nel file html ed elabora il grafico. In questo modo, ogni volta che i csv vengono aggiornati tramite il chron-job, in automatico si aggiornano anche i grafici.
 
 
 ## Hardware e software necessari
