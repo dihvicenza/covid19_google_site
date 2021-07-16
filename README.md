@@ -132,6 +132,9 @@ Qui viene rappresentato soltanto un grafico interattivo che rappresenta la letal
     - italy_shape.geojson # File contenente le coordinate per disegnare la mappa dell'Italia suddivisa per regioni
     
 ## OpenData utilizzati 
+I grafici sono stati realizzati tramite un'elaborazione degli open data pubblicati ogni pomeriggio dalla Protezione Civile e reperibili al seguente link github: https://github.com/pcm-dpc/COVID-19.
+In particolare giorno per giorno utilizziamo il file denominato "dpc-covid19-ita-regioni.csv "  che si trova nella  sottocartella  "dati-regioni". 
+Abbiamo utilizzato anche il dataset "popolazione-istat-regione-range.csv" che si trova nella sottocartella "dati-statistici-riferimento". In quest'ultimo file abbiamo trovato il numero di abitanti regione per regione e abbiamo potuto calcolare il rapporto tra gli abitanti italiani e gli abitanti di ciascuna regione. In questo modo abbiamo potuto confrontare in maniera più significativa i dati regionali e quelli italiani relativi agli ingressi in terapia intensiva, agli ingressi nei reparti ordinari e al numero di deceduti. Infatti, abbiamo moltiplicato i dati della regione considerata per il rapporto tra la popolazione italiana e la popolazione della regione ottenendo una stima dei numeri che avrebbe avuto la regione in esame se fosse popolosa quanto l'Italia. (Senza tale calcolo il confronto non sarebbe significativo in quanto la popolazione di una singola regione è nettamente inferiore a quella italiana)
 
 ## Funzionamento della webapp
 
