@@ -12,9 +12,9 @@
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
-    -[Cartella CovidDaInizioPandemia](#covidDaInizioPandemia)
-    -[Cartella CovidUltimoGiorno](#covidUltimoGiorno)
-    -[GoogleSite](#googleSite)
+    - [Cartella CovidDaInizioPandemia](#covidDaInizioPandemia)
+    - [Cartella CovidUltimoGiorno](#covidUltimoGiorno)
+    - [GoogleSite](#googleSite)
 5. [Hardware e software necessari](#hardware-e-software-necessari)
 
 
