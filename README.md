@@ -7,6 +7,8 @@
 ## Indice
 
 1. [Struttura del sito](#struttura-del-sito)
+    - [Dati giornalieri](#datiGiornalieri)
+    - [Andamento epidemia](#andamentoEpidemia)
 2. [Struttura della repository](#struttura-della-repository)
 3. [OpenData utilizzati](#opendata-utilizzati)
 4. [Funzionamento della webapp](#funzionamento-della-webapp)
@@ -22,7 +24,7 @@ Il sito web (https://sites.google.com/view/datiregionveneto/dati-giornalieri?aut
 
 Il sito si aggiorna in maniera automatica ogni giorno alle ore 19:00
 
-### 1. Dati giornalieri
+### 1. Dati giornalieri <a name="datiGiornalieri"></a>
 In questa sezione si possono visualizzare delle mappe interattive che rappresentano l'Italia suddivisa regione per regione (Trentino e Alto-Adige sono considerate due regioni distinte) e cliccando su una regione si vede il dato relativo alla regione selezionata e il dato Italiano. Ogni regione viene colorata di bianco, giallo, arancione o rosso a seconda del valore del dato considerato. Di default viene visualizzata l'ultima giornata e dei paramentri fissati determinano la colorazione della mappa. Tuttavia, è possibile cambiare sia la data che i paramentri.
 
 Questa sezione è suddivisa a sua volta in tre aree:
@@ -44,7 +46,7 @@ Anche qui vengono rappresentate due mappe:
 #### 1.3 Deceduti regione per regione
 Qui viene visulizzata una sola mappa che rappresenta il numero di deceduti (il dato italiano è diviso per 21 in modo tale da confrontare ogni regione con la media regionale)
 
-### 2. Andamento epidemia
+### 2. Andamento epidemia <a name="andamentoEpidemia"></a>
 In questa sezione si possono visualizzare dei grafici interattivi che rappresentano l'evoluzione del virus nel tempo. 
 Questa parte è suddivisa a sua volta in tre sezioni:
 - La prima sezione è relativa ai dati giornalieri
