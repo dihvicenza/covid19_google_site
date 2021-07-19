@@ -193,8 +193,14 @@ Per generare il token:
 - selezionare "Developer Settings"
 - selezionare "Personal access tokens"
 - cliccare "generate new token"
-- 
+- scrivere lo scopo del token
+- spuntare "repo" e "admin:repo_hook"
+- cliccare su "Generate token"
+- copiare il token e salvarlo da qualche parte
 
+Se si vuole creare una nuova repository tramite un altro account e lasciare intatto il codice Python già realizzato è importante chiamare la cartella "Covid" e renderla pubblica. Inoltre dopo aver generato il token, bisogna inserire la variabilie "gitToken"nelle variabili di sistema del proprio pc e lanciare da terminale il file "application.py" della cartella "CovidDaInizioPandemia". In questo modo il codice genererà da capo tutti i csv necessari. Inoltre in tutti i templates utilizzati per la generazione dei grafici bisogna sostituire l'url in fondo al codice con quello della nuova cartella pubblica utilizzata.
+
+**NOTA**: Prima di fare un push del codice su Github ricordarsi di rimuovere il token dalle variabili di sistema perchè altrimenti il token verrà revocato.
 
 #### AWS, Cron-job <a name="awsCronJob"></a>
 Per l'esecuzione automatica del codice abbiamo utilizzato la piattaforma Amazon Web Service. È necessario:
@@ -213,7 +219,7 @@ Per l'esecuzione automatica del codice abbiamo utilizzato la piattaforma Amazon 
 - cliccare su "Carica il tuo codice" ---> File locale
 - caricare la cartella zippata contente i file della cartella "FileAWS"
 
-Dopo aver caricato la cartella è necessario andare su "Configuration", categoria "software", selezionare "modifica" e in fondo aggiungere nelle proprietà d'ambiente la variabile "gitToken" con il token della dell'account github dove sono salvati i csv utilizzati dai templates.
+Dopo aver caricato la cartella è necessario andare su "Configuration", categoria "software", selezionare "modifica" e in fondo aggiungere nelle proprietà d'ambiente la variabile "gitToken" con il token generato segeuendo le istruzioni qui sopra.
 
 A questo punto per lanciare il codice presente sul server ogni giorno all 19:00 abbiamo utilizzato il seguente sito https://cron-job.org/en/ .
 Bisogna:
