@@ -16,9 +16,9 @@
     - [Cartella CovidUltimoGiorno](#covidUltimoGiorno)
     - [GoogleSite](#googleSite)
 5. [Hardware e software necessari](#hardware-e-software-necessari)
-    - [Python, HTML, JavaScript, chartJs] (#pythonHtml)
-    - [AWS, Chron-job] (#awsCronJob)
-    - [Google Site] (#googleSite)
+    - [Python, HTML, JavaScript, chartJs](#pythonHtml)
+    - [AWS, Chron-job](#awsCronJob)
+    - [Google Site](#googleSite)
 
 
 
