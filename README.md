@@ -183,7 +183,21 @@ Per installare ciasuna di queste librerie è sufficiente scrivere sul terminale 
 Per la realizzazione dei grafici abbiamo usato html e in particolare la libreria chartJS di JavaScript. Non è necessario installare questi strumenti. 
 
 #### AWS, Chron-job <a name="awsCronJob"></a>
-Per l'esecuzione automatica del codice 
+Per l'esecuzione automatica del codice abbiamo utilizzato la piattaforma Amazon Web Service. È necessario:
+- avere un account sulla piattaforma
+- utilizzare il servizio Elastic Beanstalk che si trova tra i servizi di Calcolo alla voce "Tutti i servizi"
+- creare un nuovo ambiente
+- selezionare "Ambiente del Server Web"
+- dare un nome all'applicazione
+- non è necessario utiizzare i Tag
+- dare un nome all'ambiente
+- dare un nome al dominio (meglio se lo stesso dell'ambiente)
+- selezionare piattaforma gestita
+- scegliere Python
+- scegliere il ramo "Python 3.8 running on 64bit Amazon Linux 2"
+- scegliere la versione della piattaforma 3.3.2 (Recommended)
+- cliccare su "Carica il tuo codice" ---> File locale
+- caricare la cartella zippata contente i file della cartella "FileAWS"
 
 
 #### Google Site <a name="googleSite"></a>
