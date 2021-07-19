@@ -17,7 +17,8 @@
     - [GoogleSite](#googleSite)
 5. [Hardware e software necessari](#hardware-e-software-necessari)
     - [Python, HTML, JavaScript, chartJs](#pythonHtml)
-    - [AWS, Chron-job](#awsCronJob)
+    - [Github](#github)
+    - [AWS, Cron-job](#awsCronJob)
     - [Google Site](#googleSite)
 
 
@@ -156,17 +157,18 @@ I codici contenuti in questa cartella vengono eseguiti lanciando il file applica
 #### Cartella CovidUltimoGiorno <a name="covidUltimoGiorno"></a>
 In questa cartella è presente il codice che legge i csv caricati dalla Protezione Civile, ne elabora i dati, genera un csv per la mappa relativo all'ultimo giorno e aggiorna i csv contenenti i dati settimanali e giornalieri aggiungendo una riga relativa all'ultimo giorno/settimana (la riga nel csv settimanale viene aggiunta solo di domenica).
  
-La lettura e l'elaborazione dei dati deve avvenire quotidianamente dopo la pubblicazione dei dati da parte della Protezione Civile. A tal fine una cartella zip contenente i file della cartella 'FileAWS' viene caricata su AWS (Amazon Web Server, https://aws.amazon.com/console) e un chron-job (https://cron-job.org/en/) esegue il file application.py ogni giorno alle ore 19:00.
+La lettura e l'elaborazione dei dati deve avvenire quotidianamente dopo la pubblicazione dei dati da parte della Protezione Civile. A tal fine una cartella zip contenente i file della cartella 'FileAWS' viene caricata su AWS (Amazon Web Server, https://aws.amazon.com/console) e un cron-job (https://cron-job.org/en/) esegue il file application.py ogni giorno alle ore 19:00.
 
 #### GoogleSite <a name="googleSite"></a>
-Il sito web è stato sviluppato utilizzando la piattaforma GoogleSite. Ogni volta che è presente un grafico, questo è stato realizzato incorporando un codice html  (che si trova nella cartella templatesGoogleSite) che utilizza la libreria ChartJS di JavaScript. Questo codice legge dalla nostra repository Github il csv che si trova all'url indicato nel file html ed elabora il grafico. In questo modo, ogni volta che i csv vengono aggiornati tramite il chron-job, in automatico si aggiornano anche i grafici.
+Il sito web è stato sviluppato utilizzando la piattaforma GoogleSite. Ogni volta che è presente un grafico, questo è stato realizzato incorporando un codice html  (che si trova nella cartella templatesGoogleSite) che utilizza la libreria ChartJS di JavaScript. Questo codice legge dalla nostra repository Github il csv che si trova all'url indicato nel file html ed elabora il grafico. In questo modo, ogni volta che i csv vengono aggiornati tramite il cron-job, in automatico si aggiornano anche i grafici.
 
 
 ## Hardware e software necessari
 Per lo sviluppo della webApp abbiamo utlizzato Windows 10.
 Gli strumenti ultizzati sono i seguenti:
 - Python, HTML, JavaScript, chartJs 
-- AWS, Chron-job
+- Github
+- AWS, Cron-job
 - Google Sites
 
 #### Python, HTML, JavaScript, chartJs <a name="pythonHtml"></a>
@@ -182,7 +184,19 @@ Per installare ciasuna di queste librerie è sufficiente scrivere sul terminale 
 
 Per la realizzazione dei grafici abbiamo usato html e in particolare la libreria chartJS di JavaScript. Non è necessario installare questi strumenti. 
 
-#### AWS, Chron-job <a name="awsCronJob"></a>
+#### Github <a name="github"></a>
+Per salvare i csv contenenti i dati elaborati da noi abbiamo usato un account Github con una cartella "Covid" pubblica. Inoltre abbiamo utilizzato un token per effettuare il push sulla repository pubblica.
+
+Per generare il token:
+- andare in alto a destra tramite il cerchio dell'account
+- selezionare "Settings"
+- selezionare "Developer Settings"
+- selezionare "Personal access tokens"
+- cliccare "generate new token"
+- 
+
+
+#### AWS, Cron-job <a name="awsCronJob"></a>
 Per l'esecuzione automatica del codice abbiamo utilizzato la piattaforma Amazon Web Service. È necessario:
 - avere un account sulla piattaforma
 - utilizzare il servizio Elastic Beanstalk che si trova tra i servizi di Calcolo alla voce "Tutti i servizi"
@@ -199,11 +213,21 @@ Per l'esecuzione automatica del codice abbiamo utilizzato la piattaforma Amazon 
 - cliccare su "Carica il tuo codice" ---> File locale
 - caricare la cartella zippata contente i file della cartella "FileAWS"
 
+Dopo aver caricato la cartella è necessario andare su "Configuration", categoria "software", selezionare "modifica" e in fondo aggiungere nelle proprietà d'ambiente la variabile "gitToken" con il token della dell'account github dove sono salvati i csv utilizzati dai templates.
+
+A questo punto per lanciare il codice presente sul server ogni giorno all 19:00 abbiamo utilizzato il seguente sito https://cron-job.org/en/ .
+Bisogna:
+- avere un'utenza
+- andare su Members
+- fare il login
+- andare su Cronjobs
+- selezionare "Create cronjob"
+- dare un Title
+- mettere l'url dell'applicazione presente su Elastic Beanstalk con l'aggiunta della stringa "/update"
+- selezionare "every day at 19:00"
+- nelle notifiche spuntare "Execution of the cronjob fails" e "the cronjob will be disabled because of too many failures" 
 
 #### Google Site <a name="googleSite"></a>
 Per realizzare il sito web e visualizzare i grafici ottenuti abbiamo utilizzato l'applicazione web di Google, GoogleSites.
 Per visualizzare i grafici sul sito abbiamo incorporato il nostro codice html.
-
-
-    
 
