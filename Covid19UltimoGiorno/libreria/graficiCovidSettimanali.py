@@ -1,26 +1,27 @@
+#File per l'aggiunta dei dati relativi all'ultima settimana ai csv contenenti i dati settimanali generati dal file "graficiCovidSettimanali.py" nella cartella "covid19DaInizioPandemia/libreria" 
+#Per i commenti dettagliati leggere il file graficiCovid.py di questa cartella 
+
 import pandas as pd
 import os
 from os import environ
-
-#import matplotlib.pyplot as plt
-pd.options.mode.chained_assignment = None
-
-from libreria.numeroDiAbitanti import *
-from libreria.graficiCovidRegionePerRegione import *
-
-#Codice per commitare su Gthub
 from github import Github, InputGitTreeElement
 from datetime import date as dateImport
 import datetime
 
+from libreria.numeroDiAbitanti import *
+from libreria.graficiCovidRegionePerRegione import *
 
+pd.options.mode.chained_assignment = None
+
+#Funzione chiamata da application per leggere il csv della protezione civile, elaborarne i dati, aggiungere una riga ai nostri csv settimanali e ripusharli nella cartella pubblica "Covid" di github
 def graficiSettimanali():
-	#data di oggi
-	oggi=dateImport.today().weekday()
-
+	
+	oggi=dateImport.today().weekday() #Su oggi c'è un numero che ci dice in che giorno della settimana siamo (0 per lunedì, 6 per domenica) 
+	
+	#Questo codice deve partire solo la domenica, quindi se oggi==6
 	if oggi ==6:
-		ultimaDomenica=dateImport.today()
-		variazione=datetime.timedelta(12)
+		ultimaDomenica=dateImport.today() #prendiamo la data dell'ultima domenica (coincidente con la data nel quale si lancia il programma)
+		variazione=datetime.timedelta(7)
 		penultimaDomenica=(ultimaDomenica-variazione).strftime("%d-%m-%Y")
 		ultimaDomenica=ultimaDomenica.strftime("%d-%m-%Y")
 
