@@ -20,7 +20,7 @@ def graficiSettimanali():
 
 	if oggi ==6:
 		ultimaDomenica=dateImport.today()
-		variazione=datetime.timedelta(12)
+		variazione=datetime.timedelta(7)
 		penultimaDomenica=(ultimaDomenica-variazione).strftime("%d-%m-%Y")
 		ultimaDomenica=ultimaDomenica.strftime("%d-%m-%Y")
 
