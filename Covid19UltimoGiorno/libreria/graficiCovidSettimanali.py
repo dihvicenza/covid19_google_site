@@ -21,13 +21,13 @@ def graficiSettimanali():
 	#Questo codice deve partire solo la domenica, quindi se oggi==6
 	if oggi ==6:
 		ultimaDomenica=dateImport.today() #prendiamo la data dell'ultima domenica (coincidente con la data nel quale si lancia il programma)
-		variazione=datetime.timedelta(7)
-		penultimaDomenica=(ultimaDomenica-variazione).strftime("%d-%m-%Y")
-		ultimaDomenica=ultimaDomenica.strftime("%d-%m-%Y")
+		variazione=datetime.timedelta(7) #Per risalire alla domenica precedente bisogna tornare indietro di 7 giorni 
+		penultimaDomenica=(ultimaDomenica-variazione).strftime("%d-%m-%Y") #Scriviamo quindi la data dell'ultima domenica nel formato dd-mm-yyyy
+		ultimaDomenica=ultimaDomenica.strftime("%d-%m-%Y") #Format gradevole anche per l'ultima domenica
 
-		covid19 = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",sep=",")
-		covid19NostroSenzaTotali=pd.read_csv("https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliItaliaEVeneto.csv", sep=",")
-		covid19NostroSoloTotali = pd.read_csv("https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliTamponiTotaliItaliaEVeneto.csv", sep=",")
+		covid19 = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",sep=",") #Lettura del file della Protezione Civile
+		covid19NostroSenzaTotali=pd.read_csv("https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliItaliaEVeneto.csv", sep=",") #Lettura del nostro csv senza tamponi totali
+		covid19NostroSoloTotali = pd.read_csv("https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiSettimanaliTamponiTotaliItaliaEVeneto.csv", sep=",") #Lettura del nostro csv con i tamponi totali
 
 
 		covid19['data']=(pd.to_datetime(covid19["data"]))
@@ -41,21 +41,18 @@ def graficiSettimanali():
 
 		covid19.set_index("denominazione_regione",inplace=True)
 
-		#Prendiamo tutte le date da inizio pandemia
-		date=covid19["data"]
-		
+		date=covid19["data"] #Prendiamo tutte le date da inizio pandemia
 		listaRegioni=["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna","Friuli Venezia Giulia","Lazio","Liguria","Lombardia","Marche","Molise","P.A. Bolzano","P.A. Trento","Piemonte","Puglia","Sardegna","Sicilia","Toscana","Umbria","Valle d'Aosta"]
-
 		moltiplicatoreVeneto=moltiplicatoreRegione("Veneto")
 
-		#Tasso di positivita ai tamponi totali
+		#TAMPONI TOTALI
 		tamponiSettimanali = covid19[covid19['data']==ultimaDomenica]['tamponi'] - covid19[covid19['data']==penultimaDomenica]['tamponi']
 		positiviSettimanali = covid19[covid19['data']==ultimaDomenica]['totale_casi'] - covid19[covid19['data']==penultimaDomenica]['totale_casi']
 		rapportoSettimanale = positiviSettimanali*100/tamponiSettimanali
 		rapportoSettimanaleInVeneto= rapportoSettimanale["Veneto"]
 		rapportoSettimanaleInItalia = positiviSettimanali.sum()*100/tamponiSettimanali.sum()
 		    
-		#Tasso di positivita ai tamponi molecolari
+		#TAMPONI MOLECOLARI
 		tamponiMolecolariSettimanali = covid19[covid19['data']==ultimaDomenica]['tamponi_test_molecolare'] - covid19[covid19['data']==penultimaDomenica]['tamponi_test_molecolare']
 		positiviMolecolariSettimanali=covid19[covid19['data']==ultimaDomenica]['totale_positivi_test_molecolare'] - covid19[covid19['data']==penultimaDomenica]['totale_positivi_test_molecolare']
 		rapportoMolecolareSettimanale = positiviMolecolariSettimanali*100/tamponiMolecolariSettimanali
@@ -63,40 +60,44 @@ def graficiSettimanali():
 		rapportoMolecolareSettimanaleInItalia = positiviMolecolariSettimanali.sum()*100/tamponiMolecolariSettimanali.sum()
 
 
-		#Ingressi in terapia intensiva
+		#TERAPIE INTENSIVE
 		terapiaIntensivaSettimanale=covid19[covid19["data"]==ultimaDomenica]['terapia_intensiva'] - covid19[covid19["data"]==penultimaDomenica]['terapia_intensiva']
 		terapiaIntensivaSettimanaleInVeneto=terapiaIntensivaSettimanale["Veneto"]*moltiplicatoreVeneto
 		terapiaIntensivaSettimanaleInItalia=terapiaIntensivaSettimanale.sum()
 
-		#ospedali non intensiva
+		#RICOVERI ORDINARI
 		ospedalizzatiFuoriIntensiva=covid19[covid19["data"]==ultimaDomenica]['ricoverati_con_sintomi']-covid19[covid19["data"]==penultimaDomenica]['ricoverati_con_sintomi']
 		ospedalizzatiNonIntensivaInVeneto=ospedalizzatiFuoriIntensiva["Veneto"]*moltiplicatoreVeneto
 		ospedalizzatiNonIntensivaInItalia=ospedalizzatiFuoriIntensiva.sum()
 
 
-		#deceduti supponendo il Veneto popoloso quanto l'italia
+		#DECEDUTI SUPPONENDO IL VENETO POPOLOSO QUANTO L'ITALIA
 		decedutiSettimanale=covid19[covid19["data"]==ultimaDomenica]['deceduti']-covid19[covid19["data"]==penultimaDomenica]['deceduti']
 		decedutiSettimanaleInVeneto=decedutiSettimanale["Veneto"]*moltiplicatoreVeneto
 		decedutiSettimanaleInItalia=decedutiSettimanale.sum()
 
 
-
-		#------------------------------------AGGIORNAMENTO DATABASE 1----------------------------------
+		#------------------------------------AGGIORNAMENTO DATABASE SENZA TOTALI----------------------------------
 
 		#lista per database
 		listaRegioniPerDatabase=["Abruzzo","Basilicata","Calabria","Campania","EmiliaRomagna","FriuliVeneziaGiulia","Lazio","Liguria","Lombardia","Marche","Molise","AltoAdige","Trentino","Piemonte","Puglia","Sardegna","Sicilia","Toscana","Umbria","ValleDAosta"]
 
 		rigaDaAggiungereSenzaTotali={"Data": ultimaDomenica, "tassoDiPositivitaAiTamponiMolecolariItalia": rapportoMolecolareSettimanaleInItalia,'tassoDiPositivitaAiTamponiMolecolariVeneto': rapportoMolecolareSettimanaleInVeneto,'ingressiInTerapiaIntensivaMediaRegionale':terapiaIntensivaSettimanaleInItalia, 'ingressiInTerapiaIntensivaVeneto':terapiaIntensivaSettimanaleInVeneto , 'ingressiNeiRepartiOrdinariMediaRegionale': ospedalizzatiNonIntensivaInItalia,'ingressiNeiRepartiOrdinariVeneto': ospedalizzatiNonIntensivaInVeneto, 'decedutiItalia': decedutiSettimanaleInItalia, 'decedutiVeneto':decedutiSettimanaleInVeneto}
 
-		#------------------------------------AGGIORNAMENTO DATABASE 2----------------------------------
+		#------------------------------------AGGIORNAMENTO DATABASE CON I TAMPONI TOTALI----------------------------------
 
 		rigaDaAggiungereSoloTotali={"Data": ultimaDomenica,'TassoDiPositivitaAiTamponiTotaliItalia': rapportoSettimanaleInItalia,'TassoDiPositivitaAiTamponiTotaliVeneto':rapportoSettimanaleInVeneto }
 
-		#-----------------------------CALCOLI REGIONE PER REGIONE----------------------------------
+		#--------------------------------------------------------CALCOLI REGIONE PER REGIONE---------------------------------------------
 		for i in range(len(listaRegioniPerDatabase)):
-			moltiplicatore=moltiplicatoreRegione(listaRegioni[i])
-
-			#totali
+			#La funzione "moltiplicatoreRegione" presente nel file numeroDiAbitanti.py calcola il rapporto tra la popolazione italiana e la popolazione della regione passata come input
+			moltiplicatore=moltiplicatoreRegione(listaRegioni[i]) 
+			
+			#Per calcolare ogni dato e inserirlo come value della chiave corrispondente nel dizionario rigaDaAggiungere, dobbiamo chiamare
+			#la corrispondente funzione presente nel file covid19RegionePerRegione passandogli il nome della regione.
+			#Chiamandole con listaRegioni[i] all'interno di questo ciclo for riesco a ottenere i valori per ogni regione.
+			
+			#tamponi totali
 			rigaDaAggiungereSoloTotali["TassoDiPostitivitaAiTamponiTotali"+str(listaRegioniPerDatabase[i])]=tamponiTotaliSettimanali(listaRegioni[i],covid19,ultimaDomenica,penultimaDomenica)
 
 			#tamponi molecolari
@@ -111,15 +112,16 @@ def graficiSettimanali():
 			#deceduti
 			rigaDaAggiungereSenzaTotali["deceduti"+str(listaRegioniPerDatabase[i])]=decedutiRegione(listaRegioni[i],covid19,ultimaDomenica,penultimaDomenica,moltiplicatore)
 
-
+		#Aggiungiamo la riga giusta al database giusto
 		covid19NostroSenzaTotali=covid19NostroSenzaTotali.append(rigaDaAggiungereSenzaTotali,ignore_index=True)
-
 		covid19NostroSoloTotali=covid19NostroSoloTotali.append(rigaDaAggiungereSoloTotali,ignore_index=True)
+		
+		
+		#----------------------------------------PUSH GITHUB--------------------------------------
 
 		df1=covid19NostroSenzaTotali.to_csv(sep=",",index=False)
 		df2=covid19NostroSoloTotali.to_csv(sep=",",index=False)
 
-		#----------------------------------------PUSH GITHUB--------------------------------------
 		fileList=[df1,df2]
 		fileNames=["Covid19GraficiSettimanaliItaliaEVeneto.csv","Covid19GraficiSettimanaliTamponiTotaliItaliaEVeneto.csv"]
 
@@ -133,15 +135,13 @@ def graficiSettimanali():
 		#carichiamo il file
 		mainSha=mainRef.object.sha
 		baseTree= repo.get_git_tree(mainSha)
-
 		elementList=[]
 		for i in range(len(fileList)):
 			element=InputGitTreeElement(fileNames[i],'100644','blob',fileList[i])#100644 è per file normale, 'blob' binary large object per caricare su gihub file
 			elementList.append(element)
-
 		tree=repo.create_git_tree(elementList, baseTree)
 		parent=repo.get_git_commit(mainSha)
-
 		commit=repo.create_git_commit(commitMessage,tree,[parent])
 		mainRef.edit(commit.sha)
+		
 		print("Aggiornamento settimanale completato")
