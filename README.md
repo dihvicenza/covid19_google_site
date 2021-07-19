@@ -16,6 +16,9 @@
     - [Cartella CovidUltimoGiorno](#covidUltimoGiorno)
     - [GoogleSite](#googleSite)
 5. [Hardware e software necessari](#hardware-e-software-necessari)
+    - [Python, HTML, JavaScript, chartJs] (#pythonHtml)
+    - [AWS, Chron-job] (#awsCronJob)
+    - [Google Site] (#googleSite)
 
 
 
@@ -162,14 +165,12 @@ Il sito web è stato sviluppato utilizzando la piattaforma GoogleSite. Ogni volt
 ## Hardware e software necessari
 Per lo sviluppo della webApp abbiamo utlizzato Windows 10.
 Gli strumenti ultizzati sono i seguenti:
-- Python
-- HTML,JavaScript, chartJs
-- AWS
-- Cron-job
+- Python, HTML, JavaScript, chartJs 
+- AWS, Chron-job
 - Google Sites
 
-### Python
-Per prima cosa per scrivere lo script abbiamo utilizzato Python 3.9 scaricabile al seguente link https://www.python.org/downloads/ .
+### Python, HTML, JavaScript, chartJs <a name="pythonHtml"></a>
+Per scrivere lo script abbiamo utilizzato Python 3.9 scaricabile al seguente link https://www.python.org/downloads/ .
 Le librerie principali utilizzate sono le seguenti:
 - math
 - pandas
@@ -177,8 +178,18 @@ Le librerie principali utilizzate sono le seguenti:
 - datetime
 - os
 - flask
-- 
-Per installare ciasuna di queste librerie è sufficiente scrivere sul terminale
+Per installare ciasuna di queste librerie è sufficiente scrivere sul terminale "pip install nomeLibreria" (es. "pip install pandas").
+
+Per la realizzazione dei grafici abbiamo usato html e in particolare la libreria chartJS di JavaScript. Non è necessario installare questi strumenti. 
+
+### AWS, Chron-job <a name="awsCronJob"></a>
+Per l'esecuzione automatica del codice 
+
+
+### Google Site <a name="googleSite"></a>
+Per realizzare il sito web e visualizzare i grafici ottenuti abbiamo utilizzato l'applicazione web di Google, GoogleSites.
+Per visualizzare i grafici sul sito abbiamo incorporato il nostro codice html.
+
 
     
 
