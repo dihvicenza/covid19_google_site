@@ -17,7 +17,7 @@ def update():
     mappa()
     graficiGiornalieri()
     graficiSettimanali()
-    return render_template("updateFlourish.html")
+    return render_template("update.html")
 
 mappa()
 graficiGiornalieri()
