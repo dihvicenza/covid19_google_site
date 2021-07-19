@@ -1,10 +1,10 @@
+#Per i commenti guardare lo stesso file nella cartella Covid19DaInizioPandemia
+from flask import Flask, jsonify, render_template
+
 from libreria.graficiCovidSettimanali import *
 from libreria.graficiCovid import *
 from libreria.numeroDiAbitanti import *
-
 from libreria.mappaCovid import *
-from flask import Flask, jsonify, render_template
-
 
 application = Flask(__name__)
 
