@@ -1,4 +1,4 @@
-#In questo file calcolo il numero di abitanti in Italia e in Veneto sulla base del file platea che si trova su github nella cartella dei vaccini. Da qui ricavo il numero di abitanti aventi un età dai 12 anni in su. Il numero di abitanti è quello che si ricava dall'ultimo aggiornamento del file platea
+#In questo file calcolo il numero di abitanti in Italia e in ciascuna regione Veneto sulla base del file platea che si trova su github nella cartella dei vaccini. Da qui ricavo il numero di abitanti aventi un età dai 12 anni in su. Il numero di abitanti è quello che si ricava dall'ultimo aggiornamento del file platea
 
 import pandas as pd
 vacciniPlatea= pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-statistici-riferimento/popolazione-istat-regione-range.csv", sep=",")
