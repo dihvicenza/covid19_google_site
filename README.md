@@ -169,7 +169,7 @@ Gli strumenti ultizzati sono i seguenti:
 - AWS, Chron-job
 - Google Sites
 
-### Python, HTML, JavaScript, chartJs <a name="pythonHtml"></a>
+#### Python, HTML, JavaScript, chartJs <a name="pythonHtml"></a>
 Per scrivere lo script abbiamo utilizzato Python 3.9 scaricabile al seguente link https://www.python.org/downloads/ .
 Le librerie principali utilizzate sono le seguenti:
 - math
@@ -182,11 +182,11 @@ Per installare ciasuna di queste librerie è sufficiente scrivere sul terminale 
 
 Per la realizzazione dei grafici abbiamo usato html e in particolare la libreria chartJS di JavaScript. Non è necessario installare questi strumenti. 
 
-### AWS, Chron-job <a name="awsCronJob"></a>
+#### AWS, Chron-job <a name="awsCronJob"></a>
 Per l'esecuzione automatica del codice 
 
 
-### Google Site <a name="googleSite"></a>
+#### Google Site <a name="googleSite"></a>
 Per realizzare il sito web e visualizzare i grafici ottenuti abbiamo utilizzato l'applicazione web di Google, GoogleSites.
 Per visualizzare i grafici sul sito abbiamo incorporato il nostro codice html.
 
