@@ -1,93 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>   <!-- Qui diciamo che il file è di tipologia HTML-->
+<html lang="en">  <!-- Con la sintassi inglese -->
 
+ <!-- Questa head e necessaria per utilizzare la libreria chartjs e per leggere i csv-->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
- 
     <title>Document</title>
 </head>
 
+<!-- Il grafico comparirà nella canvas con id="grafico1" -->
 <body>
     <canvas id="grafico1"></canvas> 
 </body>
 
+    
+<!-- Lo script contiene il codice JS per la realizzazione del grafico a partire dal CSV-->
 <script>
-    function originaGrafico(decedutiGiornalieri){
-
+    /* Funzione per originare il grafico. Deve avere come argomento un csv. La funzione sarà chiamata alla fine del file*/
+    function originaGrafico(decedutiGiornalieri){ 
+        /* Con decedutiGiornalieri.map(function(d)), scrivo la lambda function "function", passandole come argomento d, dove d è decedutiGiornalieri, che è il 
+        csv passato alla funzione originaGafico.
+        Con d.Data prendo la colonna Data del suddetto csv
+        La variabile dataLabels alla fine contiene tutti i valori della colonna Data, cioè le date
+        */
         var dataLabels = decedutiGiornalieri.map(function(d) {
             return d.Data
         });
-
+        
+        /* Idem con patate ma qui prendo la colonna decedutiInItalia*/
         var decedutiGiornalieriItalia = decedutiGiornalieri.map(function(d){
             return +d.decedutiInItalia
         });
+        
+        /* Idem con patate ma qui prendo la colonna decedutiInVenetoPopolosoQuantoItalia*/
         var decedutiGiornalieriVeneto = decedutiGiornalieri.map(function(d){
             return +d.decedutiInVenetoPopolosoQuantoItalia
         });
-
+        
+        /*-----------------Qui comincia la roba per Chartjs------------------------*/
+        
+        /*data è un dizionario con due chiavi: labels e datasets*/
+        /*La chiave labels è abbinata ai valori dataLabels, ossia i valori che ci saranno sull'asse x (le date)*/
+        /*La chiave datasets è una lista di dizionari, dove ogni dizionario corrisponde a una linea del grafico*/
         var data= {
             labels : dataLabels,
             datasets: [
+            /* Linea per l'Italia*/
             {
                 label: 'Italia',    //legenda
-                backgroundColor: 'rgb(0, 0, 255)',
-                borderWidth: 1.5,
-                borderColor: 'rgb(0, 0, 255)',
-
-                //Mettere data qui
-                pointHitRadius: 20,
-                data: decedutiGiornalieriItalia,
+                backgroundColor: 'rgb(0, 0, 255)', //Colore della linea
+                borderWidth: 1.5,               //Spessore della linea
+                borderColor: 'rgb(0, 0, 255)',//Colore della linea
+                pointHitRadius: 20, //Più il valore è alto, meno preciso devi essere per leggere un dato andando sopra il grafico con il cursore.
+                data: decedutiGiornalieriItalia, //Qui il value è il valore che va sull'asse y ed è la variabile contenente i dati
             },
+            /* Linea per il Veneto. Leggere i commenti nella linea per l'Italia*/
             {
                 label: 'Veneto per 12.2',    //legenda
                 backgroundColor: 'rgb(255, 0, 0)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 0)',
-
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiGiornalieriVeneto,
             }
             ]
         };
 
-        // Configurare le opzioni
-        var options = {
-                responsive: true,
+        // options è un dizionario contenente le opzioni per la realizzazione del grafico
+        var options = { 
+                responsive: true, //Il grafico si adatta alla dimensione dello schermo
+                //I plugins sono degli optional del grafico
                 plugins: {
+                    /*Dizionario relativo alla legenda*/
                     legend: {
-                    position: 'top',
+                        position: 'top', //Mettiamo la legenda in cima al grafico
                     },
+                    //Dizionario relativo al titolo del grafico
                     title: {
-                        display: true,
-                        text: "Deceduti Italia e Veneto"
+                        display: true, //Vogliamo vedere il titolo
+                        text: "Deceduti Italia e Veneto" //Testo del titolo
                     }
-
                 },
+                //elements sono i valori del grafico
                 elements: {
-                    point: {radius: 0}
+                    point: {radius: 0} //point:{radius: 0} vuol dire che i valori del grafico sono visualizzati tramite dei punti(cerchi) di raggio 0, quindi vediamo solo la linea
                 },
+                //Opzioni relative alle assi
                 scales: {
-                    x: {grid:{display:false}},
-                    y: {title:{text : "Numero deceduti", display : true}}
+                    //Asse x
+                    x: {
+                        grid:{
+                            display:false  //Non vogliamo vedere la griglia perpendicolare all'asse x
+                        }
+                    },
+                    //Asse y
+                    y: {
+                        //Diamo un titolo all'asse y
+                        title:{ 
+                            text : "Numero deceduti", //Label dell'asse y
+                            display : true //Vogliamo vedere il label
+                        }
+                    } 
                 }
         };
 
-
+        //Configuriamo il grafico. 
         var config = {
-            type : 'line',
-            data,
-            options
+            type : 'line',  //Il grafico è di tipologia line
+            data, //I dati da visualizzare li prendiamo dal dizionario data
+            options //Le options le prendiamo dal dizionaro options
         };
-
+           
+        //Realizzo il grafico e lo metto nella Canvas con id grafico1
         var myChart = new Chart('grafico1', config);
 
     }
+    
+    /* d3 è una libreria per leggere documenti. Con d3.csv leggo il file csv PRESENTE all'URL PASSATO come argomento.*/
+    /* Con .then(originaGrafico) chiamo la funzione originaGrafico passando come argomento il csv appena letto*/
     d3.csv('https://raw.githubusercontent.com/DigitalChriAri/Covid/main/Covid19GraficiItaliaEVeneto.csv').then(originaGrafico);
 </script>
 
-</html>
+</html> <!-- Fine HTML-->
