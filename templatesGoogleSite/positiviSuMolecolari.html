@@ -1,3 +1,4 @@
+<!--Per i commenti dettagliati vedere deceduti.html, decedutiSettimanali.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
- 
     <title>Document</title>
 </head>
 
@@ -37,8 +37,6 @@
                 backgroundColor: 'rgb(0, 0, 255)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0, 255)',
-
-                //Mettere data qui
                 pointHitRadius: 20,
                 data: positiviSuMolecolariItalia,
             },
@@ -47,9 +45,7 @@
                 backgroundColor: 'rgb(255, 0, 0)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 0)',
-
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: positiviSuMolecolariVeneto,
             }
             ]
@@ -66,17 +62,24 @@
                         display: true,
                         text: 'Tasso di positività ai tamponi molecolari Italia e Veneto'
                     }
-
                 },
                 elements: {
                     point: {radius: 0}
                 },
                 scales: {
-                    x: {grid:{display:false}},
-                    y: {title:{text : "Percentuale", display : true}}
+                    x: {
+                        grid:{
+                            display:false
+                        }
+                    },
+                    y: {
+                        title:{
+                            text : "Percentuale",
+                            display : true
+                        }
+                    }
                 }
         };
-
 
         var config = {
             type : 'line',
