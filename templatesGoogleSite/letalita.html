@@ -1,3 +1,4 @@
+<!-- Per commenti dettagliati vedere deceduti.html e decedutiSettimanali.html-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
- 
     <title>Document</title>
 </head>
 
@@ -93,7 +93,6 @@
             return +d.letalitaSardegna
         });
 
-
         var letalitaSicilia = letalita.map(function(d){
             return +d.letalitaSicilia
         });
@@ -118,8 +117,6 @@
                 backgroundColor: 'rgb(0, 0, 255)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0, 255)',
-
-                //Mettere data qui
                 pointHitRadius: 20,
                 data: letalitaItalia,
             },
@@ -128,9 +125,7 @@
                 backgroundColor: 'rgb(255, 0, 0)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 0)',
-
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaVeneto,
             },
             {
@@ -139,7 +134,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 255, 0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaAbruzzo,
                 hidden:true
             },
@@ -149,7 +143,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 255, 0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaBasilicata,
                 hidden:true
             },
@@ -159,7 +152,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaCalabria,
                 hidden:true
             },
@@ -169,7 +161,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 255, 255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaCampania,
                 hidden:true
             },
@@ -179,7 +170,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaEmiliaRomagna,
                 hidden:true
             },
@@ -189,7 +179,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 128,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaFriuliVeneziaGiulia,
                 hidden:true
             },
@@ -199,7 +188,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 102,51)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaLazio,
                 hidden:true
             },
@@ -209,7 +197,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(124, 20,103)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaLiguria,
                 hidden:true
             },
@@ -219,7 +206,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(153, 76,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaLombardia,
                 hidden:true
             },
@@ -229,7 +215,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0,127)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaMarche,
                 hidden:true
             },
@@ -239,7 +224,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 153,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaMolise,
                 hidden:true
             },
@@ -249,7 +233,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 191,255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaBolzano,
                 hidden:true
             },
@@ -259,7 +242,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(128, 128,128)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaTrento,
                 hidden:true
             },
@@ -269,7 +251,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(178, 34,34)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaPiemonte,
                 hidden:true
             },
@@ -279,7 +260,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0,139)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaPuglia,
                 hidden:true
             },
@@ -289,7 +269,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(153, 122,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaSardegna,
                 hidden:true
             },
@@ -299,7 +278,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 204,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaSicilia,
                 hidden:true
             },
@@ -309,7 +287,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(204, 204,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaToscana,
                 hidden:true
             },
@@ -319,7 +296,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 184, 51)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaUmbria,
                 hidden:true
             },
@@ -329,7 +305,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(204, 0,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: letalitaValleDAosta,
                 hidden:true
             },
@@ -347,17 +322,19 @@
                         display: true,
                         text: 'Tasso di letaltà'
                     }
-
                 },
                 elements: {
                     point: {radius: 0}
                 },
                 scales: {
-                    x: {grid:{display:false}}
+                    x: {
+                        grid:{
+                            display:false
+                        }
+                    }
                     
                 }
         };
-
 
         var config = {
             type : 'line',
