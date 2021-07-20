@@ -1,3 +1,4 @@
+<!-- Per commenti dettagliati vedere deceduit.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
- 
     <title>Document</title>
 </head>
+
 
 <body>
     <canvas id="grafico1"></canvas> 
@@ -28,7 +29,6 @@
         var decedutiSettimanaliVeneto = decedutiSettimanali.map(function(d){
             return +d.decedutiVeneto
         });
-
 
         var decedutiSettimanaliAbruzzo = decedutiSettimanali.map(function(d){
             return +d.decedutiAbruzzo
@@ -94,7 +94,6 @@
             return +d.decedutiSardegna
         });
 
-
         var decedutiSettimanaliSicilia = decedutiSettimanali.map(function(d){
             return +d.decedutiSicilia
         });
@@ -119,8 +118,6 @@
                 backgroundColor: 'rgb(0, 0, 255)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0, 255)',
-
-                //Mettere data qui
                 pointHitRadius: 20,
                 data: decedutiSettimanaliItalia,
             },
@@ -129,9 +126,7 @@
                 backgroundColor: 'rgb(255, 0, 0)',
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 0)',
-
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliVeneto,
             },
             {
@@ -140,9 +135,8 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 255, 0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliAbruzzo,
-                hidden:true
+                hidden:true //Con questa riga di codice facciamo si che nel grafico non sia visibile la linea corrispondente
             },
             {
                 label: 'Basilicata per 107.8',    //legenda
@@ -150,7 +144,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 255, 0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliBasilicata,
                 hidden:true
             },
@@ -160,7 +153,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0, 255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliCalabria,
                 hidden:true
             },
@@ -170,7 +162,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 255, 255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliCampania,
                 hidden:true
             },
@@ -180,7 +171,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliEmiliaRomagna,
                 hidden:true
             },
@@ -190,7 +180,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 128,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliFriuliVeneziaGiulia,
                 hidden:true
             },
@@ -200,7 +189,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 102,51)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliLazio,
                 hidden:true
             },
@@ -210,7 +198,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(124, 20,103)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliLiguria,
                 hidden:true
             },
@@ -220,7 +207,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(153, 76,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliLombardia,
                 hidden:true
             },
@@ -230,7 +216,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 0,127)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliMarche,
                 hidden:true
             },
@@ -240,7 +225,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 153,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliMolise,
                 hidden:true
             },
@@ -250,7 +234,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 191,255)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliBolzano,
                 hidden:true
             },
@@ -260,7 +243,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(128, 128,128)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliTrento,
                 hidden:true
             },
@@ -270,7 +252,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(178, 34,34)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliPiemonte,
                 hidden:true
             },
@@ -280,7 +261,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(0, 0,139)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliPuglia,
                 hidden:true
             },
@@ -290,7 +270,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(153, 122,0)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliSardegna,
                 hidden:true
             },
@@ -300,7 +279,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 204,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliSicilia,
                 hidden:true
             },
@@ -310,7 +288,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(204, 204,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliToscana,
                 hidden:true
             },
@@ -320,7 +297,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(255, 184, 51)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliUmbria,
                 hidden:true
             },
@@ -330,7 +306,6 @@
                 borderWidth: 1.5,
                 borderColor: 'rgb(204, 0,204)',
                 pointHitRadius: 20,
-                //Mettere data qui
                 data: decedutiSettimanaliValleDAosta,
                 hidden:true
             },
@@ -349,17 +324,23 @@
                         display: true,
                         text: "Deceduti"
                     }
-
                 },
                 elements: {
                     point: {radius: 0}
                 },
                 scales: {
-                    x: {grid:{display:false}},
-                    y: {title:{text : "Numero deceduti", display : true}}
+                    x: {
+                        grid:{
+                            display:false
+                        }
+                    },
+                    y: {
+                        title:{
+                            text : "Numero deceduti", display : true
+                        }
+                    }
                 }
         };
-
 
         var config = {
             type : 'line',
