@@ -1,3 +1,4 @@
+<!--Vedi mappaDecedeuti.html per i commenti dettagliati -->
 <!DOCTYPE html> 
 <html lang="en">
 
@@ -8,7 +9,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
@@ -23,7 +23,6 @@
 <body onload="caricaDefault()">
 
     <div id="graficoMappa" style="height: 450px; width: 450px; background: white; float:left"></div> 
-
     <div style="float:left; margin-left: 10px">
         <br><br><br><br><br><br>
         <table> 
@@ -44,7 +43,8 @@
                     <td> <label> Fino a che valore vuoi che una regione sia arancione? </label> </td> 
                     <td> <input type="number" step="any" name="numeroRosso" id="numeroRosso" > </input> </td>
                 </tr>
-                <tr > <td></td><td> <button style="width: 178px; margin-top: 8px; background: #008080; cursor:  pointer;padding: 3px ;color:white" onclick="generaMappa(); return false"> Genera mappa </button>
+                <tr > <td></td>
+                    <td> <button style="width: 178px; margin-top: 8px; background: #008080; cursor:  pointer;padding: 3px ;color:white" onclick="generaMappa(); return false"> Genera mappa </button></td>
                 </tr>
             </form>
         </table>
@@ -115,14 +115,13 @@
             map.dragging.disable();
         }
 
-        L.tileLayer('', {       //This is a comment https://wiki.openstreetmap.org/wiki/Tile_servers
+        L.tileLayer('', {    //https://wiki.openstreetmap.org/wiki/Tile_servers
             minZoom: 5,
         }).addTo(map);
 
             
-        var city = new L.LatLng(41.80, 12.55);  //lat lon di vicenza
-        map.setView(city, 5);   //centro la mappa su un punto
-
+        var city = new L.LatLng(41.80, 12.55);  
+        map.setView(city, 5);   
 
         let states = [
         {
@@ -326,8 +325,7 @@
         //Qui sotto il codice per colorare le varie regioni
         var geojson= L.geoJSON(states, {
         style: function(feature) {
-            /*return {fillColor: "#ff0000", color: "#000000", fillOpacity: 1,};*/
-
+          
                 switch (feature.properties.party) {
                     case "Abruzzo": 
                         if (ospedaleNonIntensiva[0]<=numeroGiallo ){ 
